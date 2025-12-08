@@ -24,9 +24,7 @@ jobs:
         id: image-tag
         run: |
           ref=${{ github.ref_name }}
-          tag=${ref#refs/tags/build/}
-          tag=${tag#refs/head/build/}
-          tag=${tag#build/}
+          tag=${ref#build/}
           echo ref: $ref
           echo tag: $tag
           echo "tag=${tag}" >> $GITHUB_OUTPUT

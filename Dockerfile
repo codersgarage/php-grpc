@@ -8,10 +8,12 @@ RUN apk add --no-cache \
     linux-headers \
     build-base \
     autoconf\
-    zlib-dev
+    zlib-dev \
+    libstdc++ \
+    brotli-dev
 RUN apk add --no-cache \
     grpc
-RUN MAKEFLAGS="-j $(nproc)" pecl install grpc
-RUN docker-php-ext-enable grpc
+RUN MAKEFLAGS="-j $(nproc)" pecl install grpc redis swoole
+RUN docker-php-ext-enable grpc redis.so swoole
 RUN rm -rf /var/cache/apk/*
 RUN find /usr/local/lib/php/extensions/ -exec strip {} \;

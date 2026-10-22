@@ -10,7 +10,8 @@ RUN apk add --no-cache \
     autoconf\
     zlib-dev \
     libstdc++ \
-    brotli-dev
+    brotli-dev \
+    openssl-dev
 RUN apk add --no-cache \
     grpc
 RUN MAKEFLAGS="-j $(nproc)" pecl install grpc redis swoole
